@@ -1,5 +1,7 @@
 From arm32v7/node:8.16-stretch-slim
 
+COPY qemu-arm-static /usr/bin
+
 WORKDIR /opt
 
 RUN set -x && \
