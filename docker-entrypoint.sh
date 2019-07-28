@@ -6,7 +6,7 @@ KIBANA_CONFIG=/opt/kibana/config/kibana.yml
 if [ "$1" = 'kibana' ]; then
   # Add elasticsearch.url into the config file if needed
   if [ ! "`cat ${KIBANA_CONFIG} | grep '^\s*elasticsearch\.url:'`" ]; then
-    sudo echo "elasticsearch.url: \"http://localhost:9200\"\n" >> ${KIBANA_CONFIG}
+    echo "elasticsearch.url: \"http://localhost:9200\"\n" >> ${KIBANA_CONFIG}
   fi
   
   # Set value to elasticsearch.url
