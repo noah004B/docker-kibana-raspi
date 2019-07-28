@@ -20,5 +20,5 @@ COPY ./docker-entrypoint.sh /entrypoint.sh
 EXPOSE 5601
 
 WORKDIR /opt/kibana
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]
 CMD ["kibana"]
