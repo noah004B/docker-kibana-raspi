@@ -16,9 +16,10 @@ RUN set -x && \
   ln -s `which npm` npm
 
 COPY ./docker-entrypoint.sh /entrypoint.sh
+COPY ./gosu /usr/local/bin/gosu
+WORKDIR /opt/kibana
   
 EXPOSE 5601
 
-WORKDIR /opt/kibana
 ENTRYPOINT ["sh", "/entrypoint.sh"]
 CMD ["kibana"]
