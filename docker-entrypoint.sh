@@ -24,7 +24,7 @@ if [ "$1" = 'kibana' ]; then
     sed -ri "s!^(\s*)?(elasticsearch[\._]url:).*!\2 '${ELASTICSEARCH_URL}'!" ${KIBANA_CONFIG}
   fi
 
-  set -- gosu nobody /opt/kibana/bin/kibana "$@"
+  set -- su-exec nobody /opt/kibana/bin/kibana "$@"
 fi
 
 exec "$@"

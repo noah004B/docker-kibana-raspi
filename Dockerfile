@@ -6,6 +6,7 @@ COPY qemu-arm-static /usr/bin
 
 WORKDIR /opt
 RUN set -x && \
+  apk add --no-cache su-exec && \
   curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-${KIBANA_VERSION}-linux-x86.tar.gz && \
   tar -xvf kibana-${KIBANA_VERSION}-linux-x86.tar.gz && \
   cd kibana-${KIBANA_VERSION}-linux-x86/node/bin && \
@@ -16,7 +17,6 @@ RUN set -x && \
   ln -s `which npm` npm
 
 COPY ./docker-entrypoint.sh /entrypoint.sh
-COPY ./gosu /usr/local/bin/gosu
 WORKDIR /opt/kibana
   
 EXPOSE 5601
