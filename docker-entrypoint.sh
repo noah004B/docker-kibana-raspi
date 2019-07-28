@@ -5,7 +5,7 @@ KIBANA_CONFIG=/opt/kibana/config/kibana.yml
 [ -e /opt/kibana/optimize ] && chmod 777 /opt/kibana/optimize || true
 
 # Add kibana as command if needed
-if [[ "$1" == -* ]]; then
+if [ "$1" == -* ]; then
   set -- /opt/kibana/bin/kibana "$@"
 fi
 
