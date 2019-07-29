@@ -11,6 +11,7 @@ fi
 if [ "$1" = 'kibana' ]; then
   if [ ! "`cat ${KIBANA_CONFIG} | grep '^\s*elasticsearch\.url:'`" ]; then
     echo "elasticsearch.url: \"http://localhost:9200\"" >> ${KIBANA_CONFIG}
+    echo "server.host: \"0.0.0.0\"" >> ${KIBANA_CONFIG}
   fi
   
   ELASTICSEARCH_URL="${ELASTICSEARCH_SERVICE_SERVICE_HOST}:${ELASTICSEARCH_SERVICE_PORT_9200_TCP_PORT}"
