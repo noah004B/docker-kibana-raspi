@@ -16,8 +16,8 @@ RUN set -x && \
   ln -s `which npm` npm
 
 COPY ./docker-entrypoint.sh /entrypoint.sh
-WORKDIR /opt/kibana
-  
+
+ENV PATH /opt/kibana/bin:$PATH
 EXPOSE 5601
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]

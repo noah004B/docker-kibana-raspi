@@ -4,6 +4,10 @@ KIBANA_CONFIG=/opt/kibana/config/kibana.yml
 
 [ -e /opt/kibana/optimize ] && chmod 777 /opt/kibana/optimize || true
 
+if [ "$1" == -* ]; then
+  set -- kibana "$@"
+fi
+
 if [ "$1" = 'kibana' ]; then
   if [ ! "`cat ${KIBANA_CONFIG} | grep '^\s*elasticsearch\.url:'`" ]; then
     echo "elasticsearch.url: \"http://localhost:9200\"" >> ${KIBANA_CONFIG}
@@ -13,5 +17,4 @@ if [ "$1" = 'kibana' ]; then
   sed -i -e "s/elasticsearch\.url: \(.*\)/elasticsearch\.url: 'http:\/\/${ELASTICSEARCH_URL}'/" ${KIBANA_CONFIG}
 fi
 
-set -- /opt/kibana/bin/kibana "$@"
 exec "$@"
